@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_App_Tutorial.BillPage"
+             Title="BillPage">
+    <VerticalStackLayout>
+        <Label 
+            x:Name="pageTitleUI"
+            Text="Nota de plata" 
+            HorizontalOptions="Center" />
+
+        <ListView x:Name="billItemsUI">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Path=Product.Denumire}"></TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Label x:Name="totalUI"
+               Text="Total"
+               HorizontalOptions="End"
+               Padding="10"/>
+
+        <Button x:Name="sendButtonUI" Text="TRIMITE COMANDA //TODO"></Button>
+
+        <Button x:Name="homeButtonUI" Text="ACASA" Clicked="OnHomeButtonClicked"></Button>
+    </VerticalStackLayout>
+</ContentPage>

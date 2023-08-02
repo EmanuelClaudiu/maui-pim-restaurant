@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_App_Tutorial.TablesPage"
+             Title="TablesPage">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <!-- First list - 30% width -->
+            <ColumnDefinition Width="3*" />
+
+            <!-- Second list - 70% width -->
+            <ColumnDefinition Width="7*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- First list -->
+        <ListView Grid.Column="0" x:Name="parentTables" ItemSelected="HandleParentTableClicked">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}"></TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Second list -->
+        <ListView Grid.Column="1" x:Name="childTables" ItemSelected="HandleChildTableClicked">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}"></TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>

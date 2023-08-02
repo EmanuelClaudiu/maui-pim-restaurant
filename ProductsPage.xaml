@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_App_Tutorial.ProductsPage"
+             Title="ProductsPage">
+    <VerticalStackLayout>
+        
+        <ScrollView Orientation="Horizontal">
+            <CollectionView x:Name="locationsUI" SelectionChanged="OnLocationClick" SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <!-- Item template -->
+                    <DataTemplate>
+                        <ContentView>
+                            <Label Text="{Binding Denumire}"></Label>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+
+        <Entry x:Name="searchBarUI"
+           Placeholder="Cauta un produs"
+           Completed="OnSearchCompleted" />
+
+        <!-- Products with categories -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="7*" />
+            </Grid.ColumnDefinitions>
+            <!-- Groups -->
+            <ListView Grid.Column="0" x:Name="groupsUI" ItemSelected="OnGroupClick">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Denumire}"></TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!-- Products -->
+            <ListView Grid.Column="1" x:Name="productsUI" ItemSelected="OnProductClick">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Denumire}"></TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+        <Button x:Name="billButtonUI" Text="Vezi nota de plata" Clicked="OnBillButtonClick"></Button>
+
+    </VerticalStackLayout>
+</ContentPage>
