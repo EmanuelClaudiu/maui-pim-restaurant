@@ -1,0 +1,3 @@
+F:\dev-manu\MAUI App Tutorial\MAUI App Tutorial\bin\Release\net7.0-android\publish\com.companyname.maui_app_tutorial-Signed.aab
+F:\dev-manu\MAUI App Tutorial\MAUI App Tutorial\bin\Release\net7.0-android\publish\com.companyname.maui_app_tutorial.aab
+F:\dev-manu\MAUI App Tutorial\MAUI App Tutorial\bin\Release\net7.0-android\publish\com.companyname.maui_app_tutorial-Signed.apk

@@ -1,0 +1,87 @@
+is_global = true
+build_property.TargetFramework = net7.0-android
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = true
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.RootNamespace = MAUI_App_Tutorial
+build_property.ProjectDir = F:\dev-manu\MAUI App Tutorial\MAUI App Tutorial\
+
+[F:/dev-manu/MAUI App Tutorial/MAUI App Tutorial/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MAUI_App_Tutorial.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[F:/dev-manu/MAUI App Tutorial/MAUI App Tutorial/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MAUI_App_Tutorial.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[F:/dev-manu/MAUI App Tutorial/MAUI App Tutorial/BillItemDetails.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MAUI_App_Tutorial.BillItemDetails.xaml
+build_metadata.AdditionalFiles.TargetPath = BillItemDetails.xaml
+build_metadata.AdditionalFiles.RelativePath = BillItemDetails.xaml
+
+[F:/dev-manu/MAUI App Tutorial/MAUI App Tutorial/BillPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MAUI_App_Tutorial.BillPage.xaml
+build_metadata.AdditionalFiles.TargetPath = BillPage.xaml
+build_metadata.AdditionalFiles.RelativePath = BillPage.xaml
+
+[F:/dev-manu/MAUI App Tutorial/MAUI App Tutorial/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MAUI_App_Tutorial.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[F:/dev-manu/MAUI App Tutorial/MAUI App Tutorial/PredefinedQuantityPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MAUI_App_Tutorial.PredefinedQuantityPage.xaml
+build_metadata.AdditionalFiles.TargetPath = PredefinedQuantityPage.xaml
+build_metadata.AdditionalFiles.RelativePath = PredefinedQuantityPage.xaml
+
+[F:/dev-manu/MAUI App Tutorial/MAUI App Tutorial/ProductsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MAUI_App_Tutorial.ProductsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = ProductsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = ProductsPage.xaml
+
+[F:/dev-manu/MAUI App Tutorial/MAUI App Tutorial/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MAUI_App_Tutorial.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[F:/dev-manu/MAUI App Tutorial/MAUI App Tutorial/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MAUI_App_Tutorial.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[F:/dev-manu/MAUI App Tutorial/MAUI App Tutorial/RoomsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MAUI_App_Tutorial.RoomsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = RoomsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = RoomsPage.xaml
+
+[F:/dev-manu/MAUI App Tutorial/MAUI App Tutorial/SettingsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MAUI_App_Tutorial.SettingsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = SettingsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = SettingsPage.xaml
+
+[F:/dev-manu/MAUI App Tutorial/MAUI App Tutorial/TablesPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MAUI_App_Tutorial.TablesPage.xaml
+build_metadata.AdditionalFiles.TargetPath = TablesPage.xaml
+build_metadata.AdditionalFiles.RelativePath = TablesPage.xaml

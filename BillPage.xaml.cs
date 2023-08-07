@@ -55,7 +55,7 @@ public partial class BillPage : ContentPage
             await DisplayAlert("Interzis", "Nu puteti edita un produs a carui comanda a fost deja plasata!", "Ok");
         } else
         {
-            await Navigation.PushAsync(new BillItemDetails(billItem, BillItemsList));
+            await Navigation.PushAsync(new BillItemDetails(billItem, BillItemsList, this.user, this.table));
         }
         billItemsUI.SelectedItem = null;
     }

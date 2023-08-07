@@ -1,6 +1,6 @@
 using MAUI_App_Tutorial.Models;
-using Mopups.Services;
 using System.Net.Http.Json;
+using System.Text.RegularExpressions;
 
 namespace MAUI_App_Tutorial;
 
@@ -8,21 +8,35 @@ public partial class BillItemDetails : ContentPage
 {
     HttpClient httpClient = new HttpClient();
     BillItem billItem;
+    User user;
+    Table table;
     public List<BillItem> billItems { get; set; }
-	public BillItemDetails(BillItem billItem, List<BillItem> billItems)
+	public BillItemDetails(BillItem billItem, List<BillItem> billItems, User user, Table table)
 	{
         this.billItem = billItem;
         this.billItems = billItems;
+        this.user = user;
+        this.table = table;
 		InitializeComponent();
         quantityEntryUI.Text = billItem.Quantity.ToString() ?? "";
         mentionsEntryUI.Text = billItem.Mention ?? "";
+        if (billItem.PredefinedQuantity != 1)
+        {
+            quantityEntryUI.IsReadOnly = true;
+        }
     }
 
-    public void OnSaveClicked(object sender, EventArgs e)
+    public async void OnSaveClicked(object sender, EventArgs e)
     {
-        // send put request
-        // check quantity entry validity
-        Navigation.PopAsync();
+        if (this.CheckRightQuantityTextFormat() == false)
+        {
+            await DisplayAlert("Error", $"Cantitatea introdusa nu este in formatul corect (numar cu maxim 3 cifre dupa virgula).", "Ok");
+            return;
+        } else
+        {
+            // send put request
+            await Navigation.PopAsync();
+        }
     }
 
     public async void OnDeleteClicked(object sender, EventArgs e)
@@ -43,27 +57,41 @@ public partial class BillItemDetails : ContentPage
 
     public async void OnMinusClicked(object sender, EventArgs e)
     {
-        // check quantity entry validity
-        // do operations with doubles rounded to 2 decimals
+        if (this.table.IdUser != null && this.table.IdUser != this.user.Id)
+        {
+            await DisplayAlert("Error", $"Nu ai acces sa editezi comanda in curs la aceasta masa.", "Ok");
+        }
         if (!this.CheckReturnsValidity())
         {
             await DisplayAlert("Error", $"Nu mai poti scadea {billItem.PredefinedQuantity} din {billItem.Product.Denumire}. " +
                 $"Stornarea nu va mai fi corecta", "Ok");
         } else
         {
-            billItem.Quantity -= billItem.PredefinedQuantity;
+            decimal newQuantity
+                = decimal.Round((decimal)billItem.Quantity, 3) - decimal.Round((decimal)billItem.PredefinedQuantity, 3);            
+            billItem.Quantity = (double)newQuantity;
             quantityEntryUI.Text = billItem.Quantity.ToString() ?? "";
         }
     }
 
-    public void OnPlusClicked(object sender, EventArgs e)
+    public async void OnPlusClicked(object sender, EventArgs e)
     {
-        billItem.Quantity += billItem.PredefinedQuantity;
+        if (this.table.IdUser != null && this.table.IdUser != this.user.Id)
+        {
+            await DisplayAlert("Error", $"Nu ai acces sa editezi comanda in curs la aceasta masa.", "Ok");
+        }
+        decimal newQuantity
+                = decimal.Round((decimal)billItem.Quantity, 3) + decimal.Round((decimal)billItem.PredefinedQuantity, 3);
+        billItem.Quantity = (double)newQuantity;
         quantityEntryUI.Text = billItem.Quantity.ToString() ?? "";
     }
 
     public bool CheckReturnsValidity()
     {
+        if (this.user.PermisStornare == false)
+        {
+            return false;
+        }
         double? total = 0;
         foreach (BillItem item in billItems)
         {
@@ -77,5 +105,11 @@ public partial class BillItemDetails : ContentPage
             return true;
         }
         return false;
+    }
+
+    public bool CheckRightQuantityTextFormat()
+    {
+        string pattern = @"^\d+(\.\d{1,3})?$";
+        return Regex.IsMatch(quantityEntryUI.Text, pattern);
     }
 }
