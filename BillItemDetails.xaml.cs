@@ -1,5 +1,7 @@
 using MAUI_App_Tutorial.Models;
 using System.Net.Http.Json;
+using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 
 namespace MAUI_App_Tutorial;
@@ -34,8 +36,22 @@ public partial class BillItemDetails : ContentPage
             return;
         } else
         {
-            // send put request
-            await Navigation.PopAsync();
+            this.billItem.Mention = mentionsEntryUI.Text;
+
+            string baseURL = Preferences.Get("BaseURL", "");
+            var endpoint = $"{baseURL}/api/BillItems/{this.billItem.Id}";
+
+            var json = JsonSerializer.Serialize<BillItem>(this.billItem);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await this.httpClient
+                .PutAsync(endpoint, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var newBillItem = await response.Content.ReadFromJsonAsync<BillItem>();
+                await DisplayAlert("Update", "Produsul de pe nota a fost modificat cu succes!", "Ok");
+                await Navigation.PopAsync();
+            }
         }
     }
 
