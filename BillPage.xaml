@@ -22,7 +22,7 @@
                HorizontalOptions="End"
                Padding="10"/>
 
-        <Button x:Name="sendButtonUI" Text="TRIMITE COMANDA //TODO"></Button>
+        <Button x:Name="sendButtonUI" Text="TRIMITE COMANDA" Clicked="OnSendButtonClicked"></Button>
 
         <Button x:Name="homeButtonUI" Text="ACASA" Clicked="OnHomeButtonClicked"></Button>
     </VerticalStackLayout>
