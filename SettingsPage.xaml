@@ -3,11 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI_App_Tutorial.SettingsPage"
              Title="SettingsPage">
-    <VerticalStackLayout>
-        <Entry x:Name="baseUrlEntryUI" HorizontalOptions="Center" 
+    <ScrollView VerticalOptions="FillAndExpand">
+        <StackLayout Spacing="15" Padding="20">
+            <Entry x:Name="baseUrlEntryUI" HorizontalOptions="Center" 
                        VerticalOptions="Center" Placeholder="Base URL"/>
-        <Button x:Name="saveButtonUI" Margin="10" HorizontalOptions="Fill"
+            <Button x:Name="saveButtonUI" HorizontalOptions="Fill"
                         VerticalOptions="EndAndExpand" Text="Salveaza" Clicked="OnSaveClicked">
-        </Button>
-    </VerticalStackLayout>
+            </Button>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

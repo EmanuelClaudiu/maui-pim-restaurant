@@ -49,9 +49,9 @@ public partial class TablesPage : ContentPage
         }
     }
 
-    void HandleParentTableClicked(object sender, SelectedItemChangedEventArgs args)
+    public void HandleParentTableClicked(object sender, EventArgs args)
     {
-        Table selectedTable = args.SelectedItem as Table;
+        Table selectedTable = parentTables.SelectedItem as Table;
         this.filteredChildTablesList = new List<Table>();
         foreach (Table table in this.childTablesList)
         {
@@ -63,9 +63,9 @@ public partial class TablesPage : ContentPage
         childTables.ItemsSource = this.filteredChildTablesList;
     }
 
-    void HandleChildTableClicked(object sender, SelectedItemChangedEventArgs args)
+    public void HandleChildTableClicked(object sender, EventArgs args)
     {
-        Table selectedTable = args.SelectedItem as Table;
+        Table selectedTable = childTables.SelectedItem as Table;
         Navigation.PushAsync(new ProductsPage(selectedTable, user));
     }
 }

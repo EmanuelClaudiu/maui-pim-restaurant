@@ -20,8 +20,7 @@ public partial class BillPage : ContentPage
 		this.table = table;
         this.user = user;
         pageTitleUI.Text = $"Nota de plata masa nr. {table.Id}";
-        /*this.LoadBill();*/
-        this.billItemsUI.ItemSelected += OnBillItemClicked;
+        this.billItemsUI.SelectionChanged += OnBillItemClicked;
 
     }
     protected override void OnAppearing()
@@ -41,7 +40,23 @@ public partial class BillPage : ContentPage
             var billItems = await response.Content.ReadFromJsonAsync<List<BillItem>>();
             BillItemsList = billItems;
             billItemsUI.ItemsSource = this.BillItemsList;
-            // compute total
+            double? totalBillPrice = 0;
+            var garbageData = false;
+            billItems.ForEach(item =>
+            {
+                if (item.Quantity != null && item.Product.Pret != null)
+                {
+                    totalBillPrice += (item.Quantity * item.Product.Pret);
+                } else
+                {
+                    garbageData = true;
+                }
+            });
+            totalUI.Text = $"Total: {decimal.Round((decimal)totalBillPrice, 3)} RON";
+            if (garbageData)
+            {
+                totalUI.Text += "; Unele produse au cantitate sau pret setate incorect";
+            }
         }
     }
 

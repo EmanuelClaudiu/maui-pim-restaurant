@@ -1,7 +1,5 @@
 using MAUI_App_Tutorial.Models;
 using System.Net.Http.Json;
-using System.Runtime.CompilerServices;
-using System.Text.Json;
 
 namespace MAUI_App_Tutorial;
 
@@ -34,9 +32,9 @@ public partial class RoomsPage : ContentPage
         }
 	}
 
-	public void HandleRoomClicked(object sender, SelectedItemChangedEventArgs args)
+	public void HandleRoomClicked(object sender, EventArgs args)
 	{
-		Room selectedRoom = args.SelectedItem as Room;
+        Room selectedRoom = listRooms.SelectedItem as Room;
         Navigation.PushAsync(new TablesPage(selectedRoom, this.user));
     }
 

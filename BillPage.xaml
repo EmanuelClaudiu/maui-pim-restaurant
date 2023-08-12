@@ -3,27 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI_App_Tutorial.BillPage"
              Title="BillPage">
-    <VerticalStackLayout>
+    
+    <Grid RowDefinitions="0.5*, 7*, 0.5*, 1*, 1*">
+        
+        <!-- First element - 5% height -->
         <Label 
             x:Name="pageTitleUI"
             Text="Nota de plata" 
             HorizontalOptions="Center" />
 
-        <ListView x:Name="billItemsUI">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding Path=Product.Denumire}"></TextCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <!-- Second element - 70% height -->
+        <ScrollView Grid.Row="1">
+            <CollectionView x:Name="billItemsUI" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding Path=Product.Denumire}"></Label>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
 
-        <Label x:Name="totalUI"
-               Text="Total"
+        <!-- Third element - 5% height -->
+        <Label x:Name="totalUI" Grid.Row="2"
+               Text="Total" 
                HorizontalOptions="End"
                Padding="10"/>
 
-        <Button x:Name="sendButtonUI" Text="TRIMITE COMANDA" Clicked="OnSendButtonClicked"></Button>
+        <!-- Fourth element - 10% height -->
+        <Button x:Name="sendButtonUI" Grid.Row="3" Text="TRIMITE COMANDA"
+                Margin="5" Clicked="OnSendButtonClicked"></Button>
 
-        <Button x:Name="homeButtonUI" Text="ACASA" Clicked="OnHomeButtonClicked"></Button>
-    </VerticalStackLayout>
+        <!-- Fifth element - 10% height -->
+        <Button x:Name="homeButtonUI" Grid.Row="4" Text="ACASA"
+                Margin="5" Clicked="OnHomeButtonClicked"></Button>
+
+    </Grid>
+    
 </ContentPage>

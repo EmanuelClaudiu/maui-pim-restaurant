@@ -3,18 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI_App_Tutorial.RoomsPage"
              Title="RoomsPage">
-    <VerticalStackLayout Spacing="15" Padding="20">
-        <Label x:Name="HelloLabel" Text="Buna User!" FontSize="28"></Label>
-        <Button Text="Deconectare" Clicked="OnLogoutClicked"></Button>
-        <Button Text="Setari" Clicked="OnSettingsClicked"></Button>
-        <Label Text="PIM Restaurant"></Label>
-        <!-- rooms from REST API -->
-        <ListView x:Name="listRooms" ItemSelected="HandleRoomClicked">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding DenumireSala}"></TextCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </VerticalStackLayout>
+    
+    <ScrollView VerticalOptions="FillAndExpand">
+        <StackLayout Spacing="15" Padding="20">
+            <Label x:Name="HelloLabel" Text="Buna User!" FontSize="28"></Label>
+            <Button Text="Deconectare" Clicked="OnLogoutClicked"></Button>
+            <Button Text="Setari" Clicked="OnSettingsClicked"></Button>
+            <Label Text="PIM Restaurant"></Label>
+            <!-- rooms from REST API -->
+            <CollectionView x:Name="listRooms" SelectionChanged="HandleRoomClicked" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding DenumireSala}"></Label>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+    
 </ContentPage>

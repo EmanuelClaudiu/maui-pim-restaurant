@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI_App_Tutorial.ProductsPage"
              Title="ProductsPage">
-    <VerticalStackLayout>
-        
+
+    <Grid RowDefinitions="0.5*, 1*, 7.5*, 1*">
+        <!-- First element - 10% height -->
         <ScrollView Orientation="Horizontal">
             <CollectionView x:Name="locationsUI" SelectionChanged="OnLocationClick" SelectionMode="Single">
                 <CollectionView.ItemsLayout>
@@ -21,35 +22,48 @@
             </CollectionView>
         </ScrollView>
 
-        <Entry x:Name="searchBarUI"
-           Placeholder="Cauta un produs"
-           Completed="OnSearchCompleted" />
+        <!-- Second element - 10% height -->
+        <Entry x:Name="searchBarUI" Grid.Row="1"
+               Placeholder="Cauta un produs"
+               Completed="OnSearchCompleted" />
 
-        <!-- Products with categories -->
-        <Grid>
+        <!-- Third element - 70% height -->
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="7*" />
             </Grid.ColumnDefinitions>
+
             <!-- Groups -->
-            <ListView Grid.Column="0" x:Name="groupsUI" ItemSelected="OnGroupClick">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding Denumire}"></TextCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <ScrollView Grid.Column="0" Orientation="Vertical">
+                <CollectionView x:Name="groupsUI" SelectionChanged="OnGroupClick" SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <ContentView>
+                                <Label Text="{Binding Denumire}"></Label>
+                            </ContentView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+
             <!-- Products -->
-            <ListView Grid.Column="1" x:Name="productsUI" ItemSelected="OnProductClick">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding Denumire}"></TextCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <ScrollView Grid.Column="1" Orientation="Vertical">
+                <CollectionView x:Name="productsUI" SelectionChanged="OnProductClick" SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <ContentView>
+                                <Label Text="{Binding Denumire}"></Label>
+                            </ContentView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
         </Grid>
 
-        <Button x:Name="billButtonUI" Text="Vezi nota de plata" Clicked="OnBillButtonClick"></Button>
+        <!-- Fourth element - 10% height -->
+        <Button Grid.Row="3" x:Name="billButtonUI" Text="Vezi nota de plata" Clicked="OnBillButtonClick"></Button>
+    
+    </Grid>
 
-    </VerticalStackLayout>
 </ContentPage>

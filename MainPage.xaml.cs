@@ -23,6 +23,11 @@ public partial class MainPage : ContentPage
 
 	async void OnAccessButtonClicked(object sender, EventArgs e)
 	{
+        if (string.IsNullOrEmpty(CodeInput.Text))
+        {
+            return;
+        }
+
         HttpClient httpClient = new HttpClient();
 
         string jsonPayload = JsonSerializer.Serialize(new LoginPostPayload

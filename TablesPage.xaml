@@ -13,21 +13,29 @@
         </Grid.ColumnDefinitions>
 
         <!-- First list -->
-        <ListView Grid.Column="0" x:Name="parentTables" ItemSelected="HandleParentTableClicked">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding Name}"></TextCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <ScrollView Grid.Column="0">
+            <CollectionView x:Name="parentTables" SelectionChanged="HandleParentTableClicked" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView>
+                            <Label Text="{Binding Name}"></Label>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
 
         <!-- Second list -->
-        <ListView Grid.Column="1" x:Name="childTables" ItemSelected="HandleChildTableClicked">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding Name}"></TextCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <ScrollView Grid.Column="1">
+            <CollectionView x:Name="childTables" SelectionChanged="HandleChildTableClicked" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView>
+                            <Label Text="{Binding Name}"></Label>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
     </Grid>
 </ContentPage>
