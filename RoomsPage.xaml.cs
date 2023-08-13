@@ -16,10 +16,14 @@ public partial class RoomsPage : ContentPage
 		this.Rooms = new List<Room>();
 		this.user = user;
 		HelloLabel.Text = $"Buna {user.NumeUtilizator}!";
+    }
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
 		this.GetRooms();
     }
 
-	private async void GetRooms()
+    private async void GetRooms()
 	{
         string baseURL = Preferences.Get("BaseURL", "");
         HttpResponseMessage response = await this.httpClient
@@ -34,8 +38,13 @@ public partial class RoomsPage : ContentPage
 
 	public void HandleRoomClicked(object sender, EventArgs args)
 	{
+        if (listRooms.SelectedItem == null)
+        {
+            return;
+        }
         Room selectedRoom = listRooms.SelectedItem as Room;
         Navigation.PushAsync(new TablesPage(selectedRoom, this.user));
+        listRooms.SelectedItem = null;
     }
 
 	public void OnLogoutClicked(object sender, EventArgs e)

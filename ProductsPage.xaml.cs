@@ -33,11 +33,16 @@ public partial class ProductsPage : ContentPage
 		InitializeComponent();
         this.LoadLocations();
         this.LoadGroups();
-        this.LoadProducts();
-        LoadBillForTable();
     }
 
-	private async void LoadLocations()
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await this.LoadProducts();
+        await LoadBillForTable();
+    }
+
+    private async void LoadLocations()
 	{
         string baseURL = Preferences.Get("BaseURL", "");
         HttpResponseMessage response = await this.httpClient
@@ -77,7 +82,7 @@ public partial class ProductsPage : ContentPage
         }
     }
 
-    private async void LoadProducts()
+    private async Task LoadProducts()
     {
         var endpoint = this.GetProductsEndpoint();
         HttpResponseMessage response = await this.httpClient
@@ -91,7 +96,7 @@ public partial class ProductsPage : ContentPage
         }
     }
 
-    private async void LoadBillForTable()
+    private async Task LoadBillForTable()
     {
         string baseURL = Preferences.Get("BaseURL", "");
         var endpoint = $"{baseURL}/api/BillItems$idTable={this.table.Id}";
@@ -121,12 +126,15 @@ public partial class ProductsPage : ContentPage
         searchBarUI.Text = "";
         this.selectedGroup = group;
         this.searchString = null;
-        this.LoadGroups();
         this.LoadProducts();
     }
 
     public async void OnProductClick(object sender, EventArgs e)
     {
+        if (productsUI.SelectedItem == null)
+        {
+            return;
+        }
         Product product = productsUI.SelectedItem as Product;
         if (this.table.Status == TableStatus.NOTA_EMISA)
         {
@@ -149,6 +157,8 @@ public partial class ProductsPage : ContentPage
             // add product on bill
             this.AddProductToBill(product);
         }
+        productsUI.SelectedItem = null;
+        this.LoadProducts();
     }
     public void OnSearchCompleted(object sender, EventArgs e) {
         string query = searchBarUI.Text;

@@ -20,6 +20,11 @@ public partial class TablesPage : ContentPage
         this.filteredChildTablesList = new List<Table>();
         this.room = room;
         this.user = user;
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
         this.LoadTables();
     }
 
@@ -65,7 +70,12 @@ public partial class TablesPage : ContentPage
 
     public void HandleChildTableClicked(object sender, EventArgs args)
     {
+        if (childTables.SelectedItem == null)
+        {
+            return;
+        }
         Table selectedTable = childTables.SelectedItem as Table;
         Navigation.PushAsync(new ProductsPage(selectedTable, user));
+        childTables.SelectedItem = null;
     }
 }
