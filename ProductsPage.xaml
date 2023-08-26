@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI_App_Tutorial.ProductsPage"
-             Title="ProductsPage">
+             Title="ProductsPage"
+             BackgroundColor="#3E3E46">
 
     <Grid RowDefinitions="0.5*, 1*, 7.5*, 1*">
         <!-- First element - 10% height -->
@@ -62,7 +63,7 @@
         </Grid>
 
         <!-- Fourth element - 10% height -->
-        <Button Grid.Row="3" x:Name="billButtonUI" Text="Vezi nota de plata" Clicked="OnBillButtonClick"></Button>
+        <Button Grid.Row="3" x:Name="billButtonUI" Text="Vezi nota de plata" Clicked="OnBillButtonClick" BackgroundColor="#36827F"></Button>
     
     </Grid>
 

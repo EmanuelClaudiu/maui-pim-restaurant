@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI_App_Tutorial.BillPage"
-             Title="BillPage">
+             Title="BillPage"
+             BackgroundColor="#3E3E46">
     
     <Grid RowDefinitions="0.5*, 7*, 0.5*, 1*, 1*">
         
@@ -31,7 +32,7 @@
 
         <!-- Fourth element - 10% height -->
         <Button x:Name="sendButtonUI" Grid.Row="3" Text="TRIMITE COMANDA"
-                Margin="5" Clicked="OnSendButtonClicked"></Button>
+                Margin="5" Clicked="OnSendButtonClicked" BackgroundColor="#36827F"></Button>
 
         <!-- Fifth element - 10% height -->
         <Button x:Name="homeButtonUI" Grid.Row="4" Text="ACASA"

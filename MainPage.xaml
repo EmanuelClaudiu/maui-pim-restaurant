@@ -2,11 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI_App_Tutorial.MainPage"
-             Title="Login">
+             Title="Login"
+             BackgroundColor="#3E3E46">
     <VerticalStackLayout Spacing="15" Padding="20">
         <Label x:Name="TitleUI" Text="Login Ospatar" FontSize="20"/>
         <Entry x:Name="CodeInput" Placeholder="Introdu parola"/>
-        <Button x:Name="AccessButton" Text="ACCESEAZA" Clicked="OnAccessButtonClicked"></Button>
+        <Button x:Name="AccessButton" Text="ACCESEAZA" Clicked="OnAccessButtonClicked" BackgroundColor="#36827F"></Button>
         <Button x:Name="SettingsButton" Text="Setari" Clicked="OnSettingsButtonClicked"></Button>
     </VerticalStackLayout>
 
