@@ -30,6 +30,7 @@ public partial class ProductsPage : ContentPage
         this.table = table;
         this.user = user;
         this.httpClient = new HttpClient();
+        ConfigurePageTitle();
 		InitializeComponent();
         this.LoadLocations();
         this.LoadGroups();
@@ -40,6 +41,16 @@ public partial class ProductsPage : ContentPage
         base.OnAppearing();
         await this.LoadProducts();
         await LoadBillForTable();
+    }
+
+    private void ConfigurePageTitle()
+    {
+        if (selectedLocation == null && selectedGroup == null)
+        {
+            Title = $"Produse {table.Name ?? ""}";
+            return;
+        }
+        Title = $"{selectedLocation?.Denumire ?? ""} - {selectedGroup?.Denumire ?? ""} | {table.Name ?? ""}";
     }
 
     private async void LoadLocations()
@@ -69,7 +80,7 @@ public partial class ProductsPage : ContentPage
         if (this.selectedLocation != null && this.selectedLocation.Id != null)
         {
             // first load or TOATE selected
-            endpoint = $"http://192.168.0.105:8099/api/Group?idLocation={this.selectedLocation.Id}";
+            endpoint = $"{baseURL}/api/Group?idLocation={this.selectedLocation.Id}";
         }
         HttpResponseMessage response = await this.httpClient
             .GetAsync(endpoint);
@@ -110,23 +121,25 @@ public partial class ProductsPage : ContentPage
             BillItemList = billItems;
         }
     }
-    public void OnLocationClick(object sender, EventArgs e) {
+    public async void OnLocationClick(object sender, EventArgs e) {
         PimLocation location = locationsUI.SelectedItem as PimLocation;
         searchBarUI.Text = "";
         this.selectedLocation = location;
         this.selectedGroup = null;
         this.searchString = null;
         this.LoadGroups();
-        this.LoadProducts();
+        await LoadProducts();
+        ConfigurePageTitle();
     }
 
-    public void OnGroupClick(object sender, EventArgs e)
+    public async void OnGroupClick(object sender, EventArgs e)
     {
         Group group = groupsUI.SelectedItem as Group;
         searchBarUI.Text = "";
         this.selectedGroup = group;
         this.searchString = null;
-        this.LoadProducts();
+        await LoadProducts();
+        ConfigurePageTitle();
     }
 
     public async void OnProductClick(object sender, EventArgs e)

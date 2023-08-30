@@ -15,5 +15,8 @@ namespace MAUI_App_Tutorial.Models
         public double? Quantity { get; set; }
         public double? PredefinedQuantity { get; set; }
         public string? Mention { get; set; }
+        public string BillItemText => orderSent == true ? 
+            $"{Product.Denumire} | {Quantity} buc. | comanda trimisa" : 
+            $"{Product.Denumire} | {Quantity} buc.";
     }
 }

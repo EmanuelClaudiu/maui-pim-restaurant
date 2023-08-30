@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI_App_Tutorial.RoomsPage"
-             Title="RoomsPage"
+             Title="Incaperi"
              BackgroundColor="#3E3E46">
     
     <ScrollView VerticalOptions="FillAndExpand">
@@ -10,12 +10,14 @@
             <Label x:Name="HelloLabel" Text="Buna User!" FontSize="28"></Label>
             <Button Text="Deconectare" Clicked="OnLogoutClicked" BackgroundColor="#D7263D"></Button>
             <Button Text="Setari" Clicked="OnSettingsClicked"></Button>
-            <Label Text="PIM Restaurant"></Label>
+            <Label Text="PIM Restaurant" TextColor="#D7263D" FontSize="21" FontAttributes="Bold"></Label>
             <!-- rooms from REST API -->
             <CollectionView x:Name="listRooms" SelectionChanged="HandleRoomClicked" SelectionMode="Single">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Label Text="{Binding DenumireSala}"></Label>
+                        <Frame BackgroundColor="#E6E6E9" CornerRadius="10" HeightRequest="60" Padding="10" HasShadow="True" Margin="16">
+                            <Label Text="{Binding DenumireSala}" TextColor="#303036" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

@@ -21,6 +21,7 @@ public partial class PredefinedQuantityPage : ContentPage
         this.user = user;
         this.newBill = newBill;
         httpClient = new HttpClient();
+        Title = $"Cantitati predefinite {product.Denumire ?? ""}";
         InitializeComponent();
         if (product.CantitatiPredefinite.Count > 0)
         {
@@ -35,7 +36,7 @@ public partial class PredefinedQuantityPage : ContentPage
         await Navigation.PopAsync();
 	}
 
-	public async Task AddProductToBillAsync(PredefinedQuantity predefinedQuantity)
+    public async Task AddProductToBillAsync(PredefinedQuantity predefinedQuantity)
 	{
         string baseURL = Preferences.Get("BaseURL", "");
         var endpoint = $"{baseURL}/api/Product/{product.Id}/AddToBill/{this.table.Id}";

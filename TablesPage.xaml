@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI_App_Tutorial.TablesPage"
-             Title="TablesPage"
+             Title="Mese"
              BackgroundColor="#3E3E46">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -19,7 +19,9 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <ContentView>
-                            <Label Text="{Binding Name}"></Label>
+                            <Frame BackgroundColor="#3E3E46" HeightRequest="56" Padding="10" BorderColor="Gray">
+                                <Label Text="{Binding Name}" FontSize="16" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            </Frame>
                         </ContentView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -29,10 +31,30 @@
         <!-- Second list -->
         <ScrollView Grid.Column="1">
             <CollectionView x:Name="childTables" SelectionChanged="HandleChildTableClicked" SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                         Span="2" />
+                </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <ContentView>
-                            <Label Text="{Binding Name}"></Label>
+                            <Grid Margin="8">
+                                <Frame BackgroundColor="#3E3E46" HeightRequest="64" Padding="10" Margin="8">
+                                    <Label Text="{Binding Name}" FontSize="16" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                </Frame>
+
+                                <Grid.Triggers>
+                                    <DataTrigger TargetType="Grid" Binding="{Binding Status}" Value="0">
+                                        <Setter Property="BackgroundColor" Value="#EFEFF1" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Grid" Binding="{Binding Status}" Value="1">
+                                        <Setter Property="BackgroundColor" Value="#36827F" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Grid" Binding="{Binding Status}" Value="2">
+                                        <Setter Property="BackgroundColor" Value="#D7263D" />
+                                    </DataTrigger>
+                                </Grid.Triggers>
+                            </Grid>
                         </ContentView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

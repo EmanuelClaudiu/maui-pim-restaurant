@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI_App_Tutorial.BillItemDetails"
-             Title="BillItemDetails"
+             Title="Produs"
              BackgroundColor="#3E3E46">
     <Grid RowDefinitions="8*, 1*, 1*">
 
@@ -10,23 +10,25 @@
         <ScrollView>
             <StackLayout Spacing="10">
                 <HorizontalStackLayout HorizontalOptions="Center">
-                    <Button x:Name="minusButtonUI" Margin="10" Text="-" Clicked="OnMinusClicked"></Button>
+                    <Label FontSize="16" Text="Cantitate" VerticalOptions="Center" Margin="8" FontAttributes="Bold"/>
+                    <Button x:Name="minusButtonUI" Margin="8" Text="-" Clicked="OnMinusClicked"></Button>
                     <Entry x:Name="quantityEntryUI" Keyboard="Numeric"
                        VerticalOptions="Center" Placeholder="Cantitate"/>
-                    <Button x:Name="plusButtonUI" Margin="10" Text="+" Clicked="OnPlusClicked"></Button>
+                    <Button x:Name="plusButtonUI" Margin="8" Text="+" Clicked="OnPlusClicked"></Button>
                 </HorizontalStackLayout>
+                <Label FontSize="16" Text="Mentiuni" HorizontalOptions="Center" VerticalOptions="Center"/>
                 <Entry x:Name="mentionsEntryUI" HorizontalOptions="Center"
                        VerticalOptions="Center" Placeholder="Mentiuni"/>
             </StackLayout>
         </ScrollView>
 
         <!-- Second element - 10% height -->
-        <Button x:Name="saveButtonUI" Grid.Row="1" Margin="5" HorizontalOptions="Fill"
+        <Button x:Name="saveButtonUI" Grid.Row="1" Margin="5" HorizontalOptions="Fill" BackgroundColor="#36827F"
                         VerticalOptions="EndAndExpand" Text="Salveaza" Clicked="OnSaveClicked">
         </Button>
 
         <!-- Third element - 10% height -->
-        <Button x:Name="deleteButtonUI" Grid.Row="2" Margin="10" HorizontalOptions="Fill"
+        <Button x:Name="deleteButtonUI" Grid.Row="2" Margin="10" HorizontalOptions="Fill" BackgroundColor="#D7263D"
                         VerticalOptions="EndAndExpand" Text="Sterge" Clicked="OnDeleteClicked">
         </Button>
         

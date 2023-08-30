@@ -2,10 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI_App_Tutorial.ProductsPage"
-             Title="ProductsPage"
+             Title="Produse"
              BackgroundColor="#3E3E46">
 
-    <Grid RowDefinitions="0.5*, 1*, 7.5*, 1*">
+    <Grid RowDefinitions="1*, 0.5*, 7.5*, 1*">
         <!-- First element - 10% height -->
         <ScrollView Orientation="Horizontal">
             <CollectionView x:Name="locationsUI" SelectionChanged="OnLocationClick" SelectionMode="Single">
@@ -16,7 +16,7 @@
                     <!-- Item template -->
                     <DataTemplate>
                         <ContentView>
-                            <Label Text="{Binding Denumire}"></Label>
+                            <Label Text="{Binding Denumire}" HorizontalOptions="Center" VerticalOptions="Center" Margin="8"/>
                         </ContentView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -41,7 +41,9 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <ContentView>
-                                <Label Text="{Binding Denumire}"></Label>
+                                <Frame BackgroundColor="#3E3E46" HeightRequest="56" BorderColor="Gray" Margin="8">
+                                    <Label Text="{Binding Denumire}" FontSize="16" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                </Frame>
                             </ContentView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -51,15 +53,22 @@
             <!-- Products -->
             <ScrollView Grid.Column="1" Orientation="Vertical">
                 <CollectionView x:Name="productsUI" SelectionChanged="OnProductClick" SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                         Span="2" />
+                    </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <ContentView>
-                                <Label Text="{Binding Denumire}"></Label>
+                                <Frame BackgroundColor="#3E3E46" HeightRequest="80" Padding="10" BorderColor="Gray" Margin="16">
+                                    <Label Text="{Binding Denumire}" FontSize="16" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                </Frame>
                             </ContentView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </ScrollView>
+
         </Grid>
 
         <!-- Fourth element - 10% height -->

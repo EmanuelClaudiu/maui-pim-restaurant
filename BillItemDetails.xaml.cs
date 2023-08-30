@@ -22,6 +22,7 @@ public partial class BillItemDetails : ContentPage
 		InitializeComponent();
         quantityEntryUI.Text = billItem.Quantity.ToString() ?? "";
         mentionsEntryUI.Text = billItem.Mention ?? "";
+        Title = billItem.Product?.Denumire ?? "Produs";
         if (billItem.PredefinedQuantity != 1)
         {
             quantityEntryUI.IsReadOnly = true;

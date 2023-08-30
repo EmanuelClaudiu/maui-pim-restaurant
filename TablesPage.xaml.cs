@@ -20,6 +20,7 @@ public partial class TablesPage : ContentPage
         this.filteredChildTablesList = new List<Table>();
         this.room = room;
         this.user = user;
+        Title = this.room.DenumireSala;
     }
 
     protected override void OnAppearing()

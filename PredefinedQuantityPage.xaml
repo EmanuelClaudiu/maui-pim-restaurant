@@ -2,19 +2,27 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI_App_Tutorial.PredefinedQuantityPage"
-             Title="PredefinedQuantityPage"
+             Title="Cantitati Predefinite"
              BackgroundColor="#3E3E46">
     <VerticalStackLayout>
         <Label 
             Text="Alege cantitatea"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <ListView Grid.Column="0" x:Name="predefinedQuantitiesUI" ItemSelected="OnPredefinedQuantityClick">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding Alias}"></TextCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            HorizontalOptions="Center"
+            Margin="16"
+            FontSize="16"/>
+        <ScrollView>
+            <CollectionView x:Name="predefinedQuantitiesUI" SelectionChanged="OnPredefinedQuantityClick" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView>
+                            <Frame BackgroundColor="#3E3E46" HeightRequest="56" Padding="10" BorderColor="Gray" Margin="8">
+                                <Label Text="{Binding Alias}" FontSize="16" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            </Frame>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
     </VerticalStackLayout>
 </ContentPage>

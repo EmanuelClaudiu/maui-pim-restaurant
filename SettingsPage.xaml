@@ -2,10 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI_App_Tutorial.SettingsPage"
-             Title="SettingsPage"
+             Title="Setari"
              BackgroundColor="#3E3E46">
     <ScrollView VerticalOptions="FillAndExpand">
         <StackLayout Spacing="15" Padding="20">
+            <Label FontSize="16" Text="Base URL" HorizontalOptions="Center" VerticalOptions="Center"/>
             <Entry x:Name="baseUrlEntryUI" HorizontalOptions="Center" 
                        VerticalOptions="Center" Placeholder="Base URL"/>
             <Button x:Name="saveButtonUI" HorizontalOptions="Fill"

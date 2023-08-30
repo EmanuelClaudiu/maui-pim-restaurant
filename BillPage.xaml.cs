@@ -12,14 +12,13 @@ public partial class BillPage : ContentPage
     User user;
     HttpClient httpClient;
     public List<BillItem> BillItemsList { get; set; }
-    bool firstLoadFlag = true;
 	public BillPage(Table table, User user)
 	{
 		InitializeComponent();
         this.httpClient = new HttpClient();
 		this.table = table;
         this.user = user;
-        pageTitleUI.Text = $"Nota de plata masa nr. {table.Id}";
+        Title = $"Nota de plata masa nr. {table.Id}";
         this.billItemsUI.SelectionChanged += OnBillItemClicked;
 
     }
@@ -55,7 +54,7 @@ public partial class BillPage : ContentPage
             totalUI.Text = $"Total: {decimal.Round((decimal)totalBillPrice, 3)} RON";
             if (garbageData)
             {
-                totalUI.Text += "; Unele produse au cantitate sau pret setate incorect";
+                totalUI.Text += "; Unele produse au cantitate sau pret setate incorect (eroare sistem)";
             }
         }
     }
