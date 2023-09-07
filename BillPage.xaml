@@ -5,12 +5,12 @@
              Title="Nota de Plata"
              BackgroundColor="#3E3E46">
     
-    <Grid RowDefinitions="0.5*, 7*, 0.5*, 1*, 1*">
+    <Grid RowDefinitions="0.4*, 7*, 0.8*, 0.9*, 0.9*">
         
         <!-- First element - 5% height -->
         <Label 
             x:Name="pageTitleUI"
-            Text="Nota de plata" 
+            Text="Nota de plata"
             HorizontalOptions="Center" />
 
         <!-- Second element - 70% height -->
@@ -18,9 +18,9 @@
             <CollectionView x:Name="billItemsUI" SelectionMode="Single">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BackgroundColor="#3E3E46" HeightRequest="56" Padding="10" BorderColor="Gray" Margin="8">
-                            <Label Text="{Binding BillItemText}" FontSize="16" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                        </Frame>
+                        <Border BackgroundColor="#3E3E46" HeightRequest="56" Padding="10" Margin="8">
+                            <Label Text="{Binding BillItemText}" FontSize="12" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

@@ -15,9 +15,10 @@
             <CollectionView x:Name="listRooms" SelectionChanged="HandleRoomClicked" SelectionMode="Single">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BackgroundColor="#E6E6E9" CornerRadius="10" HeightRequest="60" Padding="10" HasShadow="True" Margin="16">
-                            <Label Text="{Binding DenumireSala}" TextColor="#303036" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                        </Frame>
+                        <VerticalStackLayout BackgroundColor="#E6E6E9" HeightRequest="60" Padding="10" Margin="16">
+                            <Label Text="{Binding DenumireSala}" TextColor="#303036" FontSize="20" 
+                                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

@@ -5,7 +5,7 @@
              Title="Produse"
              BackgroundColor="#3E3E46">
 
-    <Grid RowDefinitions="1*, 0.5*, 7.5*, 1*">
+    <Grid RowDefinitions="0.7*, 0.8*, 7.5*, 1*">
         <!-- First element - 10% height -->
         <ScrollView Orientation="Horizontal">
             <CollectionView x:Name="locationsUI" SelectionChanged="OnLocationClick" SelectionMode="Single">
@@ -41,9 +41,9 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <ContentView>
-                                <Frame BackgroundColor="#3E3E46" HeightRequest="56" BorderColor="Gray" Margin="8">
-                                    <Label Text="{Binding Denumire}" FontSize="16" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                </Frame>
+                                <Border BackgroundColor="#3E3E46" HeightRequest="56" Margin="8">
+                                    <Label Text="{Binding Denumire}" FontSize="12" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                </Border>
                             </ContentView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -60,9 +60,9 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <ContentView>
-                                <Frame BackgroundColor="#3E3E46" HeightRequest="80" Padding="10" BorderColor="Gray" Margin="16">
-                                    <Label Text="{Binding Denumire}" FontSize="16" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                </Frame>
+                                <Border BackgroundColor="#3E3E46" HeightRequest="80" Padding="10" Margin="12">
+                                    <Label Text="{Binding Denumire}" FontSize="10" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                </Border>
                             </ContentView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

@@ -19,9 +19,9 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <ContentView>
-                            <Frame BackgroundColor="#3E3E46" HeightRequest="56" Padding="10" BorderColor="Gray">
-                                <Label Text="{Binding Name}" FontSize="16" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                            </Frame>
+                            <Border BackgroundColor="#3E3E46" HeightRequest="56" Padding="10">
+                                <Label Text="{Binding Name}" FontSize="10" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            </Border>
                         </ContentView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -39,9 +39,9 @@
                     <DataTemplate>
                         <ContentView>
                             <Grid Margin="8">
-                                <Frame BackgroundColor="#3E3E46" HeightRequest="64" Padding="10" Margin="8">
+                                <VerticalStackLayout BackgroundColor="#3E3E46" HeightRequest="64" Padding="10" Margin="8">
                                     <Label Text="{Binding Name}" FontSize="16" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                </Frame>
+                                </VerticalStackLayout>
 
                                 <Grid.Triggers>
                                     <DataTrigger TargetType="Grid" Binding="{Binding Status}" Value="0">
